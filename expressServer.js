@@ -34,7 +34,10 @@ app.get('/pets/:id', (req, res) => {
 		}
 		const id = Number.parseInt(req.params.id);
 		const pets = JSON.parse(petsJSON);
-
+		if (!(pets[id])){
+			res.set('Content-Type', 'text/plain');
+			res.sendStatus(404);
+		}
 		if (id < 0 || id >= pets.length || Number.isNaN(id)) {
 			res.set('Content-Type', 'text/plain');
 			res.sendStatus(404);
