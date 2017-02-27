@@ -32,6 +32,8 @@ const auth = function (req, res, next) {
   };
 };
 
+app.use(auth);
+
 app.post('/pets', (req, res) => {
 	fs.readFile(petsPath, 'utf8', (err, petsJSON) => {
 		const petsArray = JSON.parse(petsJSON)
